@@ -1,0 +1,79 @@
+{
+  "dataset": {
+    "name": "Breast Cancer Wisconsin (Diagnostic)",
+    "source": "scikit-learn load_breast_cancer / UCI Machine Learning Repository",
+    "instances": 569,
+    "features": 30,
+    "task": "binary classification"
+  },
+  "split": {
+    "global_train_fraction": 0.8,
+    "local_train_fraction": 0.75,
+    "local_test_fraction": 0.25
+  },
+  "model": {
+    "architecture": "MLP 30-32-2",
+    "optimizer": "SGD",
+    "learning_rate": 0.03
+  },
+  "federated_training": {
+    "method": "FedAvg",
+    "target_clients": 10,
+    "global_rounds": 25,
+    "local_epochs": 2,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "partitions": [
+      {
+        "alpha": 100.0,
+        "description": "near-IID comparison"
+      },
+      {
+        "alpha": 0.1,
+        "description": "strong non-IID"
+      }
+    ]
+  },
+  "stress_conditions": {
+    "client_dropout": [
+      0.0,
+      0.2
+    ],
+    "update_noise_std": [
+      0.0,
+      0.01
+    ],
+    "noise_interpretation": "Gaussian update perturbation is a utility stress test only; no differential-privacy epsilon/delta guarantee is claimed."
+  },
+  "reported_conditions": [
+    {
+      "alpha": 100.0,
+      "dropout": 0.0,
+      "noise_std": 0.0
+    },
+    {
+      "alpha": 100.0,
+      "dropout": 0.2,
+      "noise_std": 0.0
+    },
+    {
+      "alpha": 0.1,
+      "dropout": 0.0,
+      "noise_std": 0.0
+    },
+    {
+      "alpha": 0.1,
+      "dropout": 0.2,
+      "noise_std": 0.0
+    },
+    {
+      "alpha": 0.1,
+      "dropout": 0.0,
+      "noise_std": 0.01
+    }
+  ],
+  "reproducibility_note": "The Dirichlet partition targets 10 synthetic client slots. For alpha=0.1, very small allocations can be excluded by the minimum local-size rule; raw_runs.csv records retained_clients. This reproduces the supplied manuscript results."
+}
