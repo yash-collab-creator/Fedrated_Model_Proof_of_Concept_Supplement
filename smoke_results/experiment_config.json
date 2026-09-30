@@ -1,0 +1,69 @@
+{
+  "profile": "smoke",
+  "seeds": [
+    0
+  ],
+  "methods": [
+    "fedavg",
+    "fedprox",
+    "framework_profile"
+  ],
+  "alphas": [
+    0.1,
+    100.0
+  ],
+  "dropouts": [
+    0.0,
+    0.2
+  ],
+  "connectivity": {
+    "ideal": {
+      "name": "ideal",
+      "bandwidth_kbps": 10000,
+      "latency_ms": 20,
+      "availability": 1.0,
+      "stale_probability": 0.0
+    },
+    "moderate": {
+      "name": "moderate",
+      "bandwidth_kbps": 2000,
+      "latency_ms": 100,
+      "availability": 0.9,
+      "stale_probability": 0.05
+    },
+    "poor": {
+      "name": "poor",
+      "bandwidth_kbps": 512,
+      "latency_ms": 300,
+      "availability": 0.8,
+      "stale_probability": 0.1
+    },
+    "intermittent": {
+      "name": "intermittent",
+      "bandwidth_kbps": 128,
+      "latency_ms": 800,
+      "availability": 0.6,
+      "stale_probability": 0.25
+    },
+    "severe": {
+      "name": "severe",
+      "bandwidth_kbps": 64,
+      "latency_ms": 1500,
+      "availability": 0.5,
+      "stale_probability": 0.4
+    }
+  },
+  "noise_std": [
+    0.0
+  ],
+  "rounds": 3,
+  "local_epochs": 2,
+  "learning_rate": 0.03,
+  "fedprox_mu": 0.01,
+  "clients": 10,
+  "dataset": "Breast Cancer Wisconsin (Diagnostic), sklearn",
+  "model": "MLP 30-32-2",
+  "privacy_note": "Gaussian update noise is utility stress testing only; no epsilon/delta DP guarantee.",
+  "connectivity_note": "Connectivity scenarios are synthetic stress tests, not measured rural Indian traces.",
+  "framework_note": "framework_profile = FedProx operational profile with resilience stress settings; not a novel optimizer."
+}

@@ -1,0 +1,19 @@
+{
+  "dataset": "Breast Cancer Wisconsin (Diagnostic), sklearn",
+  "model": "MLP 30-32-2",
+  "global_train_test": "80/20",
+  "default_profile": "paper",
+  "default_seeds": [0,1,2,3,4],
+  "methods": ["centralized","local_only","fedavg","fedprox","framework_profile"],
+  "alphas": [100.0,10.0,1.0,0.1],
+  "dropouts": [0.0,0.1,0.2,0.3,0.4],
+  "connectivity": ["ideal","moderate","poor","intermittent","severe"],
+  "rounds": 50,
+  "local_epochs": 2,
+  "learning_rate": 0.03,
+  "fedprox_mu": 0.01,
+  "clients": 10,
+  "noise_note": "Gaussian update noise is utility stress testing only; no epsilon/delta guarantee.",
+  "connectivity_note": "Synthetic stress scenarios, not measured rural Indian network traces.",
+  "framework_note": "framework_profile uses FedProx as an operational profile; it is not a novel optimizer."
+}
